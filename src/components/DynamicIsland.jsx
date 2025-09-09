@@ -1,11 +1,13 @@
 // src/components/DynamicIsland.jsx
-import React, { useState } from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
-import './DynamicIsland.css'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { setExpanded, setSearchQuery } from '../store/slices/dynamicIslandSlice'
+import '../styles/DynamicIsland.css'
 
 export default function DynamicIsland() {
-	const [expanded, setExpanded] = useState(false)
-	const [searchQuery, setSearchQuery] = useState('')
+	const { expanded, searchQuery } = useSelector(state => state.dynamicIsland)
+	const dispatch = useDispatch()
 	const navigate = useNavigate()
 
 	const handleHome = () => {
@@ -26,8 +28,8 @@ export default function DynamicIsland() {
 	return (
 		<div
 			className={`dynamic-island ${expanded ? 'expanded' : ''}`}
-			onMouseEnter={() => setExpanded(true)}
-			onMouseLeave={() => setExpanded(false)}>
+			onMouseEnter={() => dispatch(setExpanded(true))}
+			onMouseLeave={() => dispatch(setExpanded(false))}>
 			{expanded ? (
 				<>
 					<form className='search-form' onSubmit={handleSearch}>
@@ -39,7 +41,7 @@ export default function DynamicIsland() {
 							className='search-input'
 							placeholder='Search location...'
 							value={searchQuery}
-							onChange={e => setSearchQuery(e.target.value)}
+							onChange={e => dispatch(setSearchQuery(e.target.value))}
 						/>
 						<button type='submit' className='search-btn'>
 							Go
@@ -51,7 +53,7 @@ export default function DynamicIsland() {
 					<span className='icon home-icon' onClick={handleHome} />
 					<span
 						className='icon search-icon'
-						onClick={() => setExpanded(true)}
+						onClick={() => dispatch(setExpanded(true))}
 					/>
 				</div>
 			)}

@@ -1,6 +1,4 @@
-/* src/styles/components/Map.css */
 
-/* Сам контейнер Cesium теперь на всё свободное место внутри content */
 .cesium-viewer {
     position: absolute !important;
     top: 0;
@@ -9,10 +7,9 @@
     right: 0;
 }
 
-/* Панель чудес поверх карты */
 .wonder-panel {
     position: absolute;
-    top: 80px;      /* чуть ниже шапки */
+    top: 80px;     
     left: 10px;
     z-index: 1000;
     background: rgba(255, 255, 255, 0.9);
@@ -22,7 +19,6 @@
     overflow-y: auto;
 }
 
-/* Карточки внутри панели */
 .wonder-card {
     display: flex;
     align-items: center;
@@ -49,7 +45,6 @@
     font-weight: 500;
 }
 
-/* Инфо-бокс */
 .wonder-info {
     position: absolute;
     bottom: 20px;
@@ -78,11 +73,10 @@
     cursor: pointer;
     color: #333;
 }
-/* src/styles/components/Map.css */
 
 .map-topbar {
     position: absolute;
-    top: 70px;  /* чуть ниже навбара */
+    top: 70px;  
     left: 50%;
     transform: translateX(-50%);
     z-index: 1100;
@@ -100,7 +94,6 @@
     background: #dc3545;
 }
 
-/* простой стили для модального окна */
 .modal-backdrop {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
